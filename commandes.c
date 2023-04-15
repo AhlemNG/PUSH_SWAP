@@ -174,6 +174,7 @@ void	make_your_moves(t_list **stack_a, t_list **stack_b, int long_a)
 				}
 			}
 		}
+		/*c'est un commentaire*/
 		push(stack_b, stack_a, 'a', long_a);
 	}
 	temp = *stack_a;
