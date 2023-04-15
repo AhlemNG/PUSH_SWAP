@@ -1,0 +1,72 @@
+
+		/*********************************************************************************/
+		//         if ((position_in_a > sizeA / 2) && (position_in_b > sizeB
+			//		/ 2))
+		//         {
+		//         position_in_a = sizeA - position_in_a + 1;
+		//         position_in_b = sizeB - position_in_b + 1;
+		//             if (position_in_a > position_in_b)
+		//             {
+		//                 while (position_in_b > 1)
+		//                 {
+		//                     reverse_rotate_a_et_b(stack_a, stack_b, long_a);
+		//                     position_in_a--;
+		//                     position_in_b--;
+		//                 }
+		//                 while (position_in_a)
+		//                 {
+		//                     rr(stack_a, 'a', long_a);
+		//                     position_in_a--;
+		//                 }
+		//             }
+		//            else if (position_in_a < position_in_b)
+		//             {
+		//                 while (position_in_a)
+		//                 {
+		//                     reverse_rotate_a_et_b(stack_a, stack_b, long_a);
+		//                     position_in_a--;
+		//                     position_in_b--;
+		//                 }
+		//                 while (position_in_b > 1)
+		//                 {
+		//                     rr(stack_b, 'b', long_a);
+		//                     position_in_b--;
+		//                 }
+		//             }
+		//         }
+		// //
+			/*********************************************************************************/
+		//         else if ((position_in_a < sizeA / 2)&& (position_in_b < sizeB / 2))
+					//         {
+					//             if (position_in_a > position_in_b)
+					//             {
+					//                 while (position_in_b >= 1)
+					//                 {
+					//                     rotate_a_et_b(stack_a, stack_b,long_a);
+					//                     position_in_a--;
+					//                     position_in_b--;
+					//                 }
+					//                 while (position_in_a > 1)
+					//                 {
+					//                     rotate(stack_a, 'a', long_a);
+					//                     position_in_a--;
+					//                 }
+					//             }
+					//             else if (position_in_a < position_in_b)
+					//             {
+					//                 while (position_in_a)
+					//                 {
+					//                     rotate_a_et_b(stack_a, stack_b,	long_a);
+					//                     position_in_a--;
+					//                     position_in_b--;
+					//                 }
+					//                 while (position_in_b > 1)
+					//                 {
+					//                     rotate(stack_b, 'b', long_a);
+					//                     position_in_b--;
+					//                 }
+					//             }
+					//         }
+					//
+					/*********************************************************************************/
+				
