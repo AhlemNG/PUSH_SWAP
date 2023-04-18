@@ -151,7 +151,7 @@ int	main(int ac, char **av)
 	long_a = ft_lstsize(&stack1);
 	indexing(&stack1);
 	push_swap(&stack1, &stack2, long_a);
-	print_value(stack1);
+	//print_value(stack1);
 	ft_free(stack1);
     ft_free(stack2);
 	return (0);

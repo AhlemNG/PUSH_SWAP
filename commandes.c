@@ -108,15 +108,25 @@ void	make_shifts(t_list **stack_a, t_list **stack_b, int long_a)
 		/**********************************************/
 		cost_in_a = cost(position_in_a, sizeA);
 		cost_in_b = cost(position_in_b, sizeB);
+		//printf("cost in a = %d\n", cost_in_a);
+		//printf("cost in b = %d\n", cost_in_b);
 		/************************************************/
 		if(cost_in_a < 0 && cost_in_b < 0)
-			make_rrr(stack_a, stack_b, &cost_in_a, &cost_in_b);
+			{
+				make_rrr(stack_a, stack_b, &cost_in_a, &cost_in_b);
+				//printf("rrr a eu lieu\n");
+		 	}
 		 /**********************************************/
 		else if(cost_in_a > 0 && cost_in_b > 0)
-			make_rr(stack_a, stack_b, &cost_in_a, &cost_in_b);
+			{
+				make_rr(stack_a, stack_b, &cost_in_a, &cost_in_b);
+				//printf("rr a eu lieu\n");
+			}
 		 /********************************************/
-			make_shifts_in_a(stack_a, &cost_in_a);
-			make_shifts_in_b(stack_b, &cost_in_b);
+			{
+				make_shifts_in_a(stack_a, &cost_in_a);
+				make_shifts_in_b(stack_b, &cost_in_b);
+			}
 		/*******************************************/
 		push_a(stack_b, stack_a);
 	}
