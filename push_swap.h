@@ -48,7 +48,7 @@ void		sort_two_numbers(t_list **stack, int long_a);
 t_list	**fivenumbers(t_list **stack1, t_list **stack2, int long_a);
 t_list	*ft_lstnew(int content);
 void		ft_lstadd_back(t_list **lst, t_list *new);
-void		ft_lstadd_front(t_list **lst, t_list *new);
+//void		ft_lstadd_front(t_list **lst, t_list *new);
 int			sorted(t_list **stack_a);
 void		swap_a_and_b(t_list **stack_a, t_list **stack_b);
 void		rotate_a_and_b(t_list **stack_a, t_list **stack_b);
@@ -80,11 +80,11 @@ int			one_node_shifts(int pos, int size);
 int			*shift_count_in_one_stack(t_list *stack, int size, int *tab);
 int			*shift_count_both_stacks(t_list *stack_a, t_list *stack_b,int sizeB, int sizeA);
 t_list  *get_list(int argc, char **argv);
-void	make_shifts_in_a(t_list **stack_a, int position_in_a, int long_a, int sizeA);
-void	make_shifts_in_b(t_list **stack_b, int position_in_b, int long_a, int sizeB);
-void 	make_rrr(t_list **stack_a, t_list **stack_b, int position_in_a, int position_in_b);
-
-
+void	make_shifts_in_a(t_list **stack_a, int *cost_in_a);
+void	make_shifts_in_b(t_list **stack_b, int *cost_in_b);
+void 	make_rrr(t_list **stack_a, t_list **stack_b, int *cost_in_a, int *cost_in_b);
+void	make_rr(t_list **stack_a, t_list **stack_b, int *cost_in_a, int *cost_in_b);
+int	cost(int position, int size);
 void	push(t_list **SRC, t_list **DST);
 void	push_a(t_list **stack_b, t_list **stack_a);
 void	push_b(t_list **stack_a, t_list **stack_b);
@@ -97,5 +97,6 @@ void    rotate_b(t_list **stack_b);
 void	reverse_rotate(t_list **stack);
 void    reverse_rotate_a(t_list **stack_a);
 void    reverse_rotate_b(t_list **stack_b);
+
 
 #endif
