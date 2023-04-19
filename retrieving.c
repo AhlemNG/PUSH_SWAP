@@ -26,17 +26,8 @@ t_list	*ft_lstnew(int content)
 	return (new);
 }
 
-int	ft_check_doublon(t_list *lst, int content)
-{
-	while (lst)
-	{
-		if (lst->nb == content)
-			return (1);
-		lst = lst->next;
-	}
-	return (0);
-}
 
+/*
 t_list	*ft_checkduplicate(t_list *element)
 {
 	t_list	*current;
@@ -57,7 +48,7 @@ t_list	*ft_checkduplicate(t_list *element)
 	}
 	return (element);
 }
-
+*/
 t_list	*ft_get_list(int argc, char **argv)
 {
 	t_list	*stack_a;
@@ -93,7 +84,7 @@ t_list	*ft_get_list(int argc, char **argv)
 	}
 	return (stack_a);
 }
-
+/*
 t_list	*convert_and_add(char **argv)
 {
 	t_list	*tmp;
@@ -136,7 +127,7 @@ void	print_value(t_list *lst)
 		lst = lst->next;
 	}
 }
-
+*/
 int	main(int ac, char **av)
 {
 	t_list *stack1;

@@ -1,6 +1,6 @@
 NAME= push_swap
 
-SRCS= commandes.c ft_atoi.c presort.c push_swap_utils.c push_swap.c retrieving.c sorting_utils.c switchcount.c push.c swap.c rotate.c reverse_rotate.c
+SRCS= shifts.c parsing.c presort.c push_swap_utils.c push_swap.c retrieving.c sorting_utils.c switchcount.c push.c swap.c rotate.c reverse_rotate.c
 		
 
 OBJS= ${SRCS:.c=.o}

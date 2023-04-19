@@ -97,6 +97,6 @@ void    rotate_b(t_list **stack_b);
 void	reverse_rotate(t_list **stack);
 void    reverse_rotate_a(t_list **stack_a);
 void    reverse_rotate_b(t_list **stack_b);
-
+int		ft_check_doublon(t_list *lst, int content);
 
 #endif
