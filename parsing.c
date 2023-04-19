@@ -65,4 +65,3 @@ int	sorted(t_list **stack_a)
 	}
 	return (1); 
 }
-
