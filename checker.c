@@ -89,27 +89,44 @@ void apply_shifts(char *line, t_list **stack_a, t_list **stack_b)
     if (which_shift == 10)
         reverse_rotate_a_and_b(stack_a, stack_b);   
 }
-
-int checker(t_list **stack_a)
+/* 1
+reading from the standard input
+char    *get_commande(line, )
 {
-    /*parsing*/ 
+    
+    line = get_next_line(parametre);
+    condition d"arret pour read... 
+} 
+*/
 
-        if (sorted(stack_a) && )
-}
-/*   \n   {} */
+/* 2  
+char    *OK_OR_KO(t_list **stack_a, t_list **stack_b)
+{
+    if (sorted(stack_a) &&  !stack_b)
+        return ("OK\n");
+    else
+        return ("KO\n");
+    } 
+} 
+*/
+
+
+/*   \n   {}  [ ]  ! */
 int main(int argc, char **argv)
 {
     t_list **stack_a;
     t_list **stack_b;
-
+    char    *line;
+    
+    line = NULL;
     stack_b = NULL;
     stack_a = ft_get_list(argc, argv);
-    if (sorted(stack_a))
+    if (sorted(stack_a)) /*has to be move in the parsing part -_-*/
     {
         write(1, "ERROR\n", 7);
         Exit(Failure);
     }
-    
-    
-    checker(stack_a, stack_b);
+    line = get_commande(line);
+    apply_shifts(line, stack_a, stack_b);
+    write(1, OK_OR_KO(line), 4);
 }
