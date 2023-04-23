@@ -68,16 +68,12 @@ t_list	*ft_get_list(int argc, char **argv)
 		{
 			write(1, "Error\n", 7);
 			exit(EXIT_FAILURE);
-			// free (stack_a);
-			// free (node);
 		}
 		node = ft_lstnew(content);
 		if (!node)
 		{
 			write(1, "Error\n", 7);
 			exit(EXIT_FAILURE);
-			// free(stack_a);
-			// free(node);
 		}
 		ft_lstadd_back(&stack_a, node);
 		i++;
@@ -128,6 +124,7 @@ void	print_value(t_list *lst)
 	}
 }
 */
+/*je ne teste pas si sorted*/
 int	main(int ac, char **av)
 {
 	t_list *stack1;
