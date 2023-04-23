@@ -1,5 +1,4 @@
 
-
 /****the progrqm will be cqlled qs follow : 
 ./checker 0 5 2 135
 1- it takes a serie of integers 
@@ -41,28 +40,29 @@
 
 int tell_which_shift(char **line)
 {
-    if (ft_strcmp(*line, "pa") == 0)
+    if (ft_strcmp(*line, "pa\n") == 0)
         return (1);
-    if (ft_strcmp(*line, "pb") == 0)
+    if (ft_strcmp(*line, "pb\n") == 0)
         return (2);
-    if (ft_strcmp(*line, "sa") == 0)
+    if (ft_strcmp(*line, "sa\n") == 0)
         return (3);
-    if (ft_strcmp(*line, "sb") == 0)
+    if (ft_strcmp(*line, "sb\n") == 0)
         return (4);
-    if (ft_strcmp(*line, "ra") == 0)
+    if (ft_strcmp(*line, "ra\n") == 0)
         return (5);
-    if (ft_strcmp(*line, "rb") == 0)
+    if (ft_strcmp(*line, "rb\n") == 0)
         return (6);
-    if (ft_strcmp(*line, "rra") == 0)
+    if (ft_strcmp(*line, "rra\n") == 0)
         return (7);
-    if (ft_strcmp(*line, "rrb") == 0)
+    if (ft_strcmp(*line, "rrb\n") == 0)
         return (8);
-    if (ft_strcmp(*line, "rr") == 0)
+    if (ft_strcmp(*line, "rr\n") == 0)
         return (9);
-    if (ft_strcmp(*line, "rrr") == 0)
+    if (ft_strcmp(*line, "rrr\n") == 0)
         return (10);
 }
 
+/*   \n   {} */
 void apply_shifts(char *line, t_list **stack_a, t_list **stack_b)
 {
     int which_shift;
@@ -88,4 +88,28 @@ void apply_shifts(char *line, t_list **stack_a, t_list **stack_b)
         rotate_a_and_b(stack_a, stack_b);
     if (which_shift == 10)
         reverse_rotate_a_and_b(stack_a, stack_b);   
+}
+
+int checker(t_list **stack_a)
+{
+    /*parsing*/ 
+
+        if (sorted(stack_a) && )
+}
+/*   \n   {} */
+int main(int argc, char **argv)
+{
+    t_list **stack_a;
+    t_list **stack_b;
+
+    stack_b = NULL;
+    stack_a = ft_get_list(argc, argv);
+    if (sorted(stack_a))
+    {
+        write(1, "ERROR\n", 7);
+        Exit(Failure);
+    }
+    
+    
+    checker(stack_a, stack_b);
 }
