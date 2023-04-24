@@ -13,7 +13,6 @@
 
 */
 
-
 /* how I SEE IT .
         1/ PARSING . DONE !
         2/ READ FROM THE STANDARD INPUT : use get_next_line
