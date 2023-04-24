@@ -27,34 +27,12 @@ t_list	*ft_lstnew(int content)
 }
 
 
-/*
-t_list	*ft_checkduplicate(t_list *element)
-{
-	t_list	*current;
-
-	current = element;
-	while (current->next != NULL)
-	{
-		while (element->next != NULL)
-		{
-			if (current->nb == element->next->nb)
-			{
-				write(1, "Error : presence of a duplicate\n", 32);
-				exit(EXIT_FAILURE);
-			}
-			element = element->next;
-		}
-		current = current->next;
-	}
-	return (element);
-}
-*/
 t_list	*ft_get_list(int argc, char **argv)
 {
 	t_list	*stack_a;
 	t_list	*node;
 	int			i;
-	int			content;
+	long long			content;
 	int			doublon;
 
 	doublon = 0;
@@ -63,55 +41,32 @@ t_list	*ft_get_list(int argc, char **argv)
 	while (i < argc)
 	{
 		content = ft_atoi(argv[i]);
+		printf("content %lld\n", content);
+	
+		if ( content < INT_MIN || content > INT_MAX)
+		{
+			write(1,"Error\n", 7);
+			exit(EXIT_FAILURE);
+		}
+	
 		doublon = ft_check_doublon(stack_a, content);
 		if (doublon)
 		{
 			write(1, "Error\n", 7);
 			exit(EXIT_FAILURE);
 		}
-		node = ft_lstnew(content);
-		if (!node)
+		node = ft_lstnew((int)content);
+		ft_lstadd_back(&stack_a, node);
+		i++;
+	}
+		if (sorted (&stack_a))
 		{
 			write(1, "Error\n", 7);
 			exit(EXIT_FAILURE);
 		}
-		ft_lstadd_back(&stack_a, node);
-		i++;
-	}
 	return (stack_a);
 }
 /*
-t_list	*convert_and_add(char **argv)
-{
-	t_list	*tmp;
-	t_list	*stack_a;
-	int			value;
-	int			i;
-
-	stack_a = NULL;
-	i = 1;
-	while (argv[i])
-	{
-		value = ft_atoi(argv[i]);
-		if (!stack_a)
-			stack_a = ft_lstnew(value);
-		else
-		{
-			tmp = stack_a;
-			while (tmp->next != NULL)
-				tmp = tmp->next;
-			tmp->next = ft_lstnew(value);
-		}
-		i++;
-	}
-	ft_checkduplicate(stack_a);
-	if (sorted(&stack_a))
-	{
-		exit(EXIT_FAILURE);
-	}
-	return (stack_a);
-}
-
 void	print_value(t_list *lst)
 {
 	if (!lst)
@@ -124,6 +79,7 @@ void	print_value(t_list *lst)
 	}
 }
 */
+
 /*je ne teste pas si sorted*/
 int	main(int ac, char **av)
 {
