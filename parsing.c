@@ -1,7 +1,8 @@
-
 #include "push_swap.h"
 
-int	ft_atoi(const char *nptr)
+/*conversion en int*/
+
+long long	ft_atoi(const char *nptr)
 {
 	int	i;
 	int	j;
@@ -30,15 +31,10 @@ int	ft_atoi(const char *nptr)
 	}
 	if (j % 2 != 0)
 		nb = -nb;
-	if ( nb < INT_MIN || nb > INT_MAX)
-		{
-			write(1,"Error\n", 7);
-			exit(EXIT_FAILURE);
-		}
-	else
-		return (nb);
-}
 
+	return (nb);
+}
+/*recherche de doublon*/
 int	ft_check_doublon(t_list *lst, int content)
 {
 	while (lst)
@@ -49,14 +45,12 @@ int	ft_check_doublon(t_list *lst, int content)
 	}
 	return (0);
 }
-
-
+/*verification si triee*/
 int	sorted(t_list **stack_a)
 {
 	t_list	*parcourir;
 
 	parcourir = *stack_a;
-	
 	while (parcourir->next)
 	{
 		if (parcourir->nb > parcourir->next->nb)
