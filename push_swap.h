@@ -32,7 +32,7 @@ typedef struct s_list
 	int temp_position;
 }			t_list;
 
-int			ft_atoi(const char *nptr);
+long long 			ft_atoi(const char *nptr);
 size_t		ft_strlen(const char *s);
 void		ft_free(t_list *element);
 // void		swap(t_list **element, char c, int long_a);
