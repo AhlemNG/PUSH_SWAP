@@ -41,7 +41,7 @@ t_list	*ft_get_list(int argc, char **argv)
 	while (i < argc)
 	{
 		content = ft_atoi(argv[i]);
-		printf("content %lld\n", content);
+		//printf("content %lld\n", content);
 	
 		if ( content < INT_MIN || content > INT_MAX)
 		{
