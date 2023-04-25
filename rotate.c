@@ -39,7 +39,7 @@ void	rotate_b(t_list **stack_b)
 
 void	rotate_a_and_b(t_list **stack_a, t_list **stack_b)
 {
-	rotate_a(stack_a);
-	rotate_b(stack_b);
+	rotate(stack_a);
+	rotate(stack_b);
 	write(1, "rr\n", 3);
 }

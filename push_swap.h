@@ -31,7 +31,7 @@ typedef struct s_list
 	int final_position;
 	int temp_position;
 }			t_list;
-
+int	cost(int position, int size, int *direction);
 long long 			ft_atoi(const char *nptr);
 size_t		ft_strlen(const char *s);
 void		ft_free(t_list *element);
@@ -80,11 +80,10 @@ int			one_node_shifts(int pos, int size);
 int			*shift_count_in_one_stack(t_list *stack, int size, int *tab);
 int			*shift_count_both_stacks(t_list *stack_a, t_list *stack_b,int sizeB, int sizeA);
 t_list  *get_list(int argc, char **argv);
-void	make_shifts_in_a(t_list **stack_a, int *cost_in_a);
-void	make_shifts_in_b(t_list **stack_b, int *cost_in_b);
-void 	make_rrr(t_list **stack_a, t_list **stack_b, int *cost_in_a, int *cost_in_b);
+void	make_shifts_in_a(t_list **stack_a, int *cost_in_a, int direction);
+void	make_shifts_in_b(t_list **stack_b, int *cost_in_b, int direction);
 void	make_rr(t_list **stack_a, t_list **stack_b, int *cost_in_a, int *cost_in_b);
-int	cost(int position, int size);
+void	make_rrr(t_list **stack_a, t_list **stack_b, int *cost_in_a, int *cost_in_b);
 void	push(t_list **SRC, t_list **DST);
 void	push_a(t_list **stack_b, t_list **stack_a);
 void	push_b(t_list **stack_a, t_list **stack_b);

@@ -7,6 +7,7 @@ void	presort(t_list **stack_a, t_list **stack_b, int long_a)
 	mediane = 0;
 	indexing(stack_a);
 	mediane = (ft_lstsize(stack_a) - 3) / 2;
+	//printf("mediane = %d\n", mediane);
 	while (ft_lstsize(stack_a) > 3)
 	{
 		while (((*stack_a)->final_position == long_a

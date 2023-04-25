@@ -50,7 +50,7 @@ void    reverse_rotate_b(t_list **stack_b)
 
 void	reverse_rotate_a_and_b(t_list **stack_a, t_list **stack_b)
 {
-	reverse_rotate_a(stack_a);
-	reverse_rotate_b(stack_b);
+	reverse_rotate(stack_a);
+	reverse_rotate(stack_b);
 	write(1, "rrr\n", 4);
 }

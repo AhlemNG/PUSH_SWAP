@@ -48,7 +48,6 @@ t_list	*ft_get_list(int argc, char **argv)
 			write(1,"Error\n", 7);
 			exit(EXIT_FAILURE);
 		}
-	
 		doublon = ft_check_doublon(stack_a, content);
 		if (doublon)
 		{
@@ -66,7 +65,7 @@ t_list	*ft_get_list(int argc, char **argv)
 		}
 	return (stack_a);
 }
-/*
+
 void	print_value(t_list *lst)
 {
 	if (!lst)
@@ -78,7 +77,7 @@ void	print_value(t_list *lst)
 		lst = lst->next;
 	}
 }
-*/
+
 
 /*je ne teste pas si sorted*/
 int	main(int ac, char **av)
@@ -95,7 +94,7 @@ int	main(int ac, char **av)
 	long_a = ft_lstsize(&stack1);
 	indexing(&stack1);
 	push_swap(&stack1, &stack2, long_a);
-	//print_value(stack1);
+	// print_value(stack1);
 	ft_free(stack1);
     ft_free(stack2);
 	return (0);
