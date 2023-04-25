@@ -3,26 +3,26 @@
 void    sort_two_numbers(t_list **stack, int long_a)
 {
     if((*stack)->nb > (*stack)->next->nb)
-        swap(stack, 'a', long_a); 
+        swap_a(stack);
 }
 
 t_list  *threenumbers(t_list *stack1, int long_a)
 {
     if((stack1->nb < stack1->next->nb) && (stack1->nb > stack1->next->next->nb) && (stack1->next->nb > stack1->next->next->nb))
-        rr(&stack1, 'a', long_a);
+        reverse_rotate_a(&stack1);
     else if ((stack1->nb < stack1->next->nb) && (stack1->nb < stack1->next->next->nb) && (stack1->next->nb > stack1->next->next->nb))
     {    
-        rr(&stack1, 'a', long_a);
-        swap(&stack1, 'a', long_a);
+        reverse_rotate_a(&stack1);
+        swap_a(&stack1);
     }
     else if ((stack1->nb > stack1->next->nb) && (stack1->nb < stack1->next->next->nb) && (stack1->next->nb < stack1->next->next->nb))
-        swap(&stack1, 'a', long_a);
+      swap_a(&stack1);
     else if ((stack1->nb > stack1->next->nb) && (stack1->nb > stack1->next->next->nb) && (stack1->next->nb < stack1->next->next->nb))
-        rotate(&stack1, 'a', long_a);
+        rotate_a(&stack1);
     else if ((stack1->nb > stack1->next->nb) && (stack1->nb > stack1->next->next->nb) && (stack1->next->nb > stack1->next->next->nb))
     {
-        swap(&stack1, 'a', long_a); 
-        rr(&stack1, 'a', long_a);
+         swap_a(&stack1);
+        reverse_rotate_a(&stack1);
     }
     return(stack1);
 }
@@ -34,6 +34,6 @@ void	push_swap(t_list **stack_a, t_list **stack_b, int long_a)
 	else
 	{
 		presort(stack_a, stack_b, long_a);
-		make_your_moves(stack_a, stack_b, long_a);
+		make_shifts(stack_a, stack_b, long_a);
 	}
 }

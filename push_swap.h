@@ -6,7 +6,7 @@
 /*   By: anouri <anouri@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/12 16:47:56 by eghaffar          #+#    #+#             */
-/*   Updated: 2023/04/12 15:43:51 by anouri           ###   ########.fr       */
+/*   Updated: 2023/04/16 13:04:29 by anouri           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,37 +32,27 @@ typedef struct s_list
 	int temp_position;
 }			t_list;
 
-void		fswap_a_et_b(t_list **stack_a, t_list **stack_b, int long_a);
-void		frotate_a_et_b(t_list **stack_a, t_list **stack_b,
-				int long_a);
-void		freverse_rotate_a_et_b(t_list **stack_a, t_list **stack_b,
-				int long_a);
-t_list	*fswap(t_list *element, char c, int long_a);
-void		fpush(t_list **stack1, t_list **stack2, char c, int long_a);
-t_list	*frr(t_list *stack, char c, int long_a);
-t_list	*frotate(t_list *stack, char c, int log_a);
-int			ft_atoi(const char *nptr);
+long long 			ft_atoi(const char *nptr);
 size_t		ft_strlen(const char *s);
 void		ft_free(t_list *element);
-void		swap(t_list **element, char c, int long_a);
+// void		swap(t_list **element, char c, int long_a);
 int			ft_lstsize(t_list **element);
-void		push(t_list **stack1, t_list **stack2, char c, int long_a);
+// void		push(t_list **stack1, t_list **stack2, char c, int long_a);
 void		print_value(t_list *lst);
-void		rotate(t_list **stack, char c, int log_a);
+// void		rotate(t_list **stack, char c, int log_a);
 void		ft_lstdelone(t_list *lst, void (*del)(void *));
-void		rr(t_list **stack, char c, int long_a);
+// void		rr(t_list **stack, char c, int long_a);
 t_list	*threenumbers(t_list *stack1, int long_a);
 t_list	*convert_and_add(char **argv);
 void		sort_two_numbers(t_list **stack, int long_a);
 t_list	**fivenumbers(t_list **stack1, t_list **stack2, int long_a);
 t_list	*ft_lstnew(int content);
 void		ft_lstadd_back(t_list **lst, t_list *new);
-void		ft_lstadd_front(t_list **lst, t_list *new);
+//void		ft_lstadd_front(t_list **lst, t_list *new);
 int			sorted(t_list **stack_a);
-void		swap_a_et_b(t_list **stack_a, t_list **stack_b, int long_a);
-void		rotate_a_et_b(t_list **stack_a, t_list **stack_b, int long_a);
-void		reverse_rotate_a_et_b(t_list **stack_a, t_list **stack_b,
-				int long_a);
+void		swap_a_and_b(t_list **stack_a, t_list **stack_b);
+void		rotate_a_and_b(t_list **stack_a, t_list **stack_b);
+void		reverse_rotate_a_and_b(t_list **stack_a, t_list **stack_b);
 t_list	*mediane(t_list **stack_a, int long_a);
 void		onehundrednumbers(t_list **stack_a, t_list **stack_b,
 				int long_a);
@@ -83,12 +73,30 @@ int			shift_count(t_list **stack_a, t_list **stack_b, int sizeA,
 void		push_swap(t_list **stack_a, t_list **stack_b, int long_a);
 void		temporary_indexing(t_list **stack);
 int			minimum(int *tab, int size);
-void		make_your_moves(t_list **stack_a, t_list **stack_b,
+void		make_shifts(t_list **stack_a, t_list **stack_b,
 				int long_a);
 int			find_position_in_a(t_list *stack_a, t_list *node);
 int			one_node_shifts(int pos, int size);
 int			*shift_count_in_one_stack(t_list *stack, int size, int *tab);
-int			*shift_count_both_stacks(t_list *stack_a, t_list *stack_b,
-				int sizeB, int sizeA);
+int			*shift_count_both_stacks(t_list *stack_a, t_list *stack_b,int sizeB, int sizeA);
 t_list  *get_list(int argc, char **argv);
+void	make_shifts_in_a(t_list **stack_a, int *cost_in_a);
+void	make_shifts_in_b(t_list **stack_b, int *cost_in_b);
+void 	make_rrr(t_list **stack_a, t_list **stack_b, int *cost_in_a, int *cost_in_b);
+void	make_rr(t_list **stack_a, t_list **stack_b, int *cost_in_a, int *cost_in_b);
+int	cost(int position, int size);
+void	push(t_list **SRC, t_list **DST);
+void	push_a(t_list **stack_b, t_list **stack_a);
+void	push_b(t_list **stack_a, t_list **stack_b);
+void    swap(t_list **stack);
+void    swap_a(t_list **stack_a);
+void    swap_b(t_list **stack_b);
+void	rotate(t_list **stack);
+void    rotate_a(t_list **stack_a);
+void    rotate_b(t_list **stack_b);
+void	reverse_rotate(t_list **stack);
+void    reverse_rotate_a(t_list **stack_a);
+void    reverse_rotate_b(t_list **stack_b);
+int		ft_check_doublon(t_list *lst, int content);
+
 #endif

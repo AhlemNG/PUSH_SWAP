@@ -31,14 +31,6 @@ int ft_lstsize(t_list **element)
     return(i);
 }
 
-void	ft_lstdelone(t_list *lst, void (*del)(void *))
-{
-	if (del == NULL || lst == NULL)
-		return ;
-	del(lst->next);
-	free (lst);
-}
-
 void    ft_free(t_list *element)
 {
     t_list	*temp;
@@ -75,20 +67,6 @@ void	ft_lstadd_back(t_list **lst, t_list *new)
 	temp -> next = new;
 }
 
-int	sorted(t_list **stack_a)
-{
-	t_list	*parcourir;
-
-	parcourir = *stack_a;
-	
-	while (parcourir->next)
-	{
-		if (parcourir->nb > parcourir->next->nb)
-			return (0);
-		parcourir = parcourir->next;
-	}
-	return (1); 
-}
 
 t_list *mediane(t_list **stack_a, int long_a)
 {
