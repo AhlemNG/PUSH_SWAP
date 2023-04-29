@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   switchcount.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: anouri <marvin@42.fr>                      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/04/29 11:58:16 by anouri            #+#    #+#             */
+/*   Updated: 2023/04/29 11:58:21 by anouri           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
 int find_position_in_a(t_list *stack_a, t_list *node)
@@ -90,7 +102,7 @@ void    temporary_indexing(t_list **stack)
     }
 }
 
-int shift_count(t_list **stack_a, t_list **stack_b, int sizeA, int sizeB)
+int find_position_in_b(t_list **stack_a, t_list **stack_b, int sizeA, int sizeB)
 {
 
     int *shift_tab;

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.h                                        :+:      :+:    :+:   */
+/*   push_swap_bonus.h                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: anouri <anouri@student.42.fr>              +#+  +:+       +#+        */
+/*   By: anouri <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/12 16:47:56 by eghaffar          #+#    #+#             */
-/*   Updated: 2023/04/29 11:55:15 by anouri           ###   ########.fr       */
+/*   Created: 2023/04/29 17:12:35 by anouri            #+#    #+#             */
+/*   Updated: 2023/04/29 17:12:39 by anouri           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,17 +80,17 @@ void	make_shifts_in_b(t_list **stack_b, int *cost_in_b, int direction);
 void	make_rr(t_list **stack_a, t_list **stack_b, int *cost_in_a, int *cost_in_b);
 void	make_rrr(t_list **stack_a, t_list **stack_b, int *cost_in_a, int *cost_in_b);
 void	push(t_list **SRC, t_list **DST);
-void	push_a(t_list **stack_b, t_list **stack_a);
-void	push_b(t_list **stack_a, t_list **stack_b);
+void	push_a_bonus(t_list **stack_b, t_list **stack_a);
+void	push_b_bonus(t_list **stack_a, t_list **stack_b);
 void    swap(t_list **stack);
-void    swap_a(t_list **stack_a);
-void    swap_b(t_list **stack_b);
+void    swap_a_bonus(t_list **stack_a);
+void    swap_b_bonus(t_list **stack_b);
 void	rotate(t_list **stack);
-void    rotate_a(t_list **stack_a);
-void    rotate_b(t_list **stack_b);
+void    rotate_a_bonus(t_list **stack_a);
+void    rotate_b_bonus(t_list **stack_b);
 void	reverse_rotate(t_list **stack);
-void    reverse_rotate_a(t_list **stack_a);
-void    reverse_rotate_b(t_list **stack_b);
+void    reverse_rotate_a_bonus(t_list **stack_a);
+void    reverse_rotate_b_bonus(t_list **stack_b);
 int		ft_check_doublon(t_list *lst, int content);
 
 /******* sorting*******/
@@ -98,6 +98,5 @@ int		ft_check_doublon(t_list *lst, int content);
 void real_sort(t_list **stack_a, t_list **stack_b, int position_in_a, int position_in_b);
 
 void final_sort(t_list **stack, int long_a);
-
 
 #endif

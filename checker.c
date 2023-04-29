@@ -1,39 +1,40 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   checker.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: anouri <marvin@42.fr>                      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/04/29 11:53:36 by anouri            #+#    #+#             */
+/*   Updated: 2023/04/29 11:53:42 by anouri           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-/****the progrqm will be cqlled qs follow : 
-./checker 0 5 2 135
-1- it takes a serie of integers 
-        -does nothing if nothing is given
-2- it waits to read commands from the standard input
+#inclue "push_swap_bonus.h"
 
-3- it applys the commands read on the given list of numbers
+size_t	ft_strlen(const char *s)
+{
+	size_t	len;
 
---> if after applying the command the stack a is sorted and the stacl b is empty==> OK
---> if not : KO
---> if error in arguments : not an integer or duplicate .... free parsing
+	len = 0;
+	while (s[len])
+	{
+		len++;
+	}
+	return (len);
+}
 
-*/
+int	ft_strcmp(const char *s1, const char *s2)
+{
+	size_t	i;
+    size_t  n;
 
-/* how I SEE IT .
-        1/ PARSING . DONE !
-        2/ READ FROM THE STANDARD INPUT : use get_next_line
-        3/ APPLY THE COMMANDS
-        4/ READ NEXT LINE
-                  READ------------->--------------------/APPLY
-                    -                                       -
-                    -       get_next_line_returns(what?)    -
-                    -                                       -
-                    -                                       -
-                    APPLY-----------<--------------/READ_next/
-                
-        5/ FINISHED READING
-        6/ FINISHED SORTING
-        7/ SEE IF STACK A IS SORTED  ANS STACK B IS EMPTY => SHOW REULST--> OK
-                                                                         2
-                                                                         .
-                                                                         KO
-*/
-
-/*interpreting the read line*/
+    n = ft_strlen(s1);
+	i = 0;
+	while (i < (n - 1) && s1[i] == s2[i] && s1[i] != '\0' && s2[i] != '\0')
+		i++;
+	return ((unsigned char)s1[i] - (unsigned char)s2[i]);
+}
 
 #include "push_swap.h"
 
@@ -59,9 +60,9 @@ int tell_which_shift(char **line)
         return (9);
     if (ft_strcmp(*line, "rrr\n") == 0)
         return (10);
+  
 }
 
-/*   \n   {} */
 void apply_shifts(char *line, t_list **stack_a, t_list **stack_b)
 {
     int which_shift;
@@ -86,46 +87,41 @@ void apply_shifts(char *line, t_list **stack_a, t_list **stack_b)
     if (which_shift == 9)
         rotate_a_and_b(stack_a, stack_b);
     if (which_shift == 10)
-        reverse_rotate_a_and_b(stack_a, stack_b);   
+        reverse_rotate_a_and_b(stack_a, stack_b);
+      else
+    {
+        free(stack_a);
+        free(stack_b);
+        free(line);
+        get_next_line(1,1);
+        write(1, "Error\n", 7);
+		exit(EXIT_FAILURE);
+    }
 }
-/* 1
-reading from the standard input
-char    *get_commande(line, )
-{
-    
-    line = get_next_line(parametre);
-    condition d"arret pour read... 
-} 
-*/
 
-/* 2  
-char    *OK_OR_KO(t_list **stack_a, t_list **stack_b)
-{
-    if (sorted(stack_a) &&  !stack_b)
-        return ("OK\n");
-    else
-        return ("KO\n");
-    } 
-} 
-*/
-
-
-/*   \n   {}  [ ]  ! */
 int main(int argc, char **argv)
 {
     t_list **stack_a;
     t_list **stack_b;
     char    *line;
-    
-    line = NULL;
-    stack_b = NULL;
-    stack_a = ft_get_list(argc, argv);
-    if (sorted(stack_a)) /*has to be move in the parsing part -_-*/
+  
+    if (argc > 1)
     {
-        write(1, "ERROR\n", 7);
-        Exit(Failure);
+        stack_a = ft_get_list(argc, argv);
+        stack_b = NULL;    
+        line = malloc (1 * sizeof(char));
+        while (line != NULL)
+        {
+            free(line);
+            line = get_next_line(0,0);
+            if (!line)
+                break;
+            apply_shifts(line, stack_a, stack_b);
+        }
+        if (sorted(stack_a))
+            write(1,"OK\n", 3);
+        else
+            write(1,"KO\n", 3);
     }
-    line = get_commande(line);
-    apply_shifts(line, stack_a, stack_b);
-    write(1, OK_OR_KO(line), 4);
+    return (0);
 }

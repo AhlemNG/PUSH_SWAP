@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   presort.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: anouri <marvin@42.fr>                      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/04/29 11:54:37 by anouri            #+#    #+#             */
+/*   Updated: 2023/04/29 11:54:39 by anouri           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
 void	presort(t_list **stack_a, t_list **stack_b, int long_a)
@@ -7,7 +19,6 @@ void	presort(t_list **stack_a, t_list **stack_b, int long_a)
 	mediane = 0;
 	indexing(stack_a);
 	mediane = (ft_lstsize(stack_a) - 3) / 2;
-	//printf("mediane = %d\n", mediane);
 	while (ft_lstsize(stack_a) > 3)
 	{
 		while (((*stack_a)->final_position == long_a
@@ -24,5 +35,5 @@ void	presort(t_list **stack_a, t_list **stack_b, int long_a)
 		else if ((*stack_a)->final_position >= mediane)
 			push_b(stack_a, stack_b);
 	}
-	*stack_a = threenumbers(*stack_a, long_a);
+	sort_three_numbers(stack_a, long_a);
 }

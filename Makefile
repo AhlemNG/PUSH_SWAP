@@ -1,6 +1,18 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: anouri <marvin@42.fr>                      +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2023/04/29 11:54:13 by anouri            #+#    #+#              #
+#    Updated: 2023/04/29 11:54:18 by anouri           ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
 NAME= push_swap
 
-SRCS= shifts.c parsing.c presort.c push_swap_utils.c push_swap.c retrieving.c sorting_utils.c switchcount.c push.c swap.c rotate.c reverse_rotate.c
+SRCS= shifts.c parsing.c presort.c push_swap_utils.c push_swap.c retrieving.c indexing.c switchcount.c push.c swap.c rotate.c reverse_rotate.c make_shifts.c
 		
 
 OBJS= ${SRCS:.c=.o}
