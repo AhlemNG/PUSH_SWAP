@@ -12,6 +12,21 @@
 
 #include "push_swap.h"
 
+void	temporary_indexing(t_list **stack)
+{
+	t_list	*parcourir;
+	int		i;
+
+	i = 1;
+	parcourir = *stack;
+	while (parcourir)
+	{
+		parcourir->temp_position = i;
+		i++;
+		parcourir = parcourir->next;
+	}
+}
+
 static void	initilize_index(t_list **stack)
 {
 	t_list	*parcourir;
@@ -36,22 +51,6 @@ static int	did_not_finish_indexing(t_list **stack)
 		parcourir = parcourir->next;
 	}
 	return (0);
-}
-
-static void	give_final_position(t_list **stack, int *fp, long *min)
-{
-	t_list	*parcourir;
-
-	parcourir = *stack;
-	while (parcourir)
-	{
-		if (parcourir->nb == *min)
-		{
-			(*fp)++;
-			parcourir->final_position = *fp;
-		}
-		parcourir = parcourir->next;
-	}
 }
 
 static void	index_stack(t_list **stack)

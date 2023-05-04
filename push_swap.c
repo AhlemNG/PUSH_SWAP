@@ -5,48 +5,12 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: anouri <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/29 11:55:00 by anouri            #+#    #+#             */
-/*   Updated: 2023/04/29 11:55:02 by anouri           ###   ########.fr       */
+/*   Created: 2023/05/03 13:34:27 by anouri            #+#    #+#             */
+/*   Updated: 2023/05/03 13:34:29 by anouri           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-void	sort_two_numbers(t_list **stack, int long_a)
-{
-	if ((*stack)->nb > (*stack)->next->nb)
-		swap_a(stack);
-}
-
-void	sort_three_numbers(t_list **stack1, int long_a)
-{
-	if (((*stack1)->nb < (*stack1)->next->nb)
-		&& ((*stack1)->nb > (*stack1)->next->next->nb)
-		&& ((*stack1)->next->nb > ((*stack1)->next->next)->nb))
-		reverse_rotate_a(stack1);
-	else if (((*stack1)->nb < (*stack1)->next->nb)
-			&& ((*stack1)->nb < (*stack1)->next->next->nb)
-			&& ((*stack1)->next->nb > (*stack1)->next->next->nb))
-	{
-		reverse_rotate_a(stack1);
-		swap_a(stack1);
-	}
-	else if (((*stack1)->nb > (*stack1)->next->nb)
-			&& ((*stack1)->nb < (*stack1)->next->next->nb)
-			&& ((*stack1)->next->nb < (*stack1)->next->next->nb))
-		swap_a(stack1);
-	else if (((*stack1)->nb > (*stack1)->next->nb)
-			&& ((*stack1)->nb > (*stack1)->next->next->nb)
-			&& ((*stack1)->next->nb < (*stack1)->next->next->nb))
-		rotate_a(stack1);
-	else if (((*stack1)->nb > (*stack1)->next->nb)
-			&& ((*stack1)->nb > (*stack1)->next->next->nb)
-			&& ((*stack1)->next->nb > (*stack1)->next->next->nb))
-	{
-		swap_a(stack1);
-		reverse_rotate_a(stack1);
-	}
-}
 
 void	push_swap(t_list **stack_a, t_list **stack_b, int long_a)
 {
@@ -54,7 +18,36 @@ void	push_swap(t_list **stack_a, t_list **stack_b, int long_a)
 		sort_two_numbers(stack_a, long_a);
 	else
 	{
+		indexing(stack_a);
 		presort(stack_a, stack_b, long_a);
-		make_shifts(stack_a, stack_b, long_a);
+		main_sort(stack_a, stack_b, long_a);
 	}
+}
+
+int	main(int ac, char **av)
+{
+	t_list	*stack_a;
+	t_list	*stack_b;
+	int		long_a;
+
+	if (ac == 2)
+	{
+		if (!check_if_valid(av))
+		{
+			write(1, "Error\n", 6);
+			exit(EXIT_FAILURE);
+		}
+	}
+	if (ac > 2)
+	{
+		stack_b = NULL;
+		stack_a = get_list(ac, av);
+		if (sorted(&stack_a))
+			return (0);
+		long_a = ft_lstsize(&stack_a);
+		push_swap(&stack_a, &stack_b, long_a);
+	}
+	ft_free(stack_a);
+	ft_free(stack_b);
+	return (0);
 }

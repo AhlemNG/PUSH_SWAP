@@ -12,15 +12,6 @@
 
 #include "push_swap.h"
 
-/*conversion en int*/
-
-int	is_digit(char c)
-{
-	if (c < '0' || c > '9')
-		return (0);
-	return (1);
-}
-
 long long	ft_atoi(const char *nptr)
 {
 	int			i;
@@ -37,11 +28,6 @@ long long	ft_atoi(const char *nptr)
 			j++;
 		i++;
 	}
-	if ((nptr[i] < '0' || nptr[i] > '9'))
-	{
-		write(1, "Error\n", 7);
-		exit(EXIT_FAILURE);
-	}
 	nb = 0;
 	while (is_digit(nptr[i]))
 	{
@@ -53,45 +39,58 @@ long long	ft_atoi(const char *nptr)
 	return (nb);
 }
 
-// int	is_valid_argument(int argc, char **argv)
-// {
-// 	int	i;
-
-// 	i = 1;
-// 	while(i <= argc)
-// 	{
-// 		if (!is_digit(argv[i]))
-// 			return (0);
-// 		if
-// 		i++;
-// 	}
-// 	return (1);
-// }
-
-/*recherche de doublon*/
-int	ft_check_doublon(t_list *lst, int content)
+int	no_doublon(char **str)
 {
-	while (lst)
+	int	i;
+	int	j;
+
+	i = 1;
+	while (str[i])
 	{
-		if (lst->nb == content)
-			return (1);
-		lst = lst->next;
+		j = i + 1;
+		while (str[j])
+		{
+			if (str_nb_compare(str[i], str[j]) == 0)
+				return (0);
+			j++;
+		}
+		i++;
 	}
-	return (0);
+	return (1);
 }
 
-/*verification si triee*/
-
-int	sorted(t_list **stack_a)
+int	is_number(char *str)
 {
-	t_list	*parcourir;
+	int	j;
 
-	parcourir = *stack_a;
-	while (parcourir->next)
+	j = 0;
+	if (!str)
+		return (0);
+	if ((str[j] == '-' || str[j] == '+') && str[j + 1] != '\0')
+		j++;
+	while (str[j] != '\0' && is_digit(str[j]) == 1)
+		j++;
+	if (str[j] != '\0' && is_digit(str[j]) == 0)
+		return (0);
+	return (1);
+}
+
+int	check_if_valid(char **argv)
+{
+	long long	content;
+	int			i;
+
+	i = 1;
+	if (no_doublon(argv) == 0)
+		return (0);
+	while (argv[i])
 	{
-		if (parcourir->nb > parcourir->next->nb)
+		if (is_number(argv[i]) == 0)
 			return (0);
-		parcourir = parcourir->next;
+		content = ft_atoi(argv[i]);
+		if ((content < INT_MIN || content > INT_MAX))
+			return (0);
+		i++;
 	}
 	return (1);
 }

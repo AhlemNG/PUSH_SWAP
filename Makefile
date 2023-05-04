@@ -12,8 +12,20 @@
 
 NAME= push_swap
 
-SRCS= shifts.c parsing.c presort.c push_swap_utils.c push_swap.c retrieving.c indexing.c switchcount.c push.c swap.c rotate.c reverse_rotate.c make_shifts.c
-		
+SRCS=  cost.c\
+	indexing.c \
+	list.c \
+	make_shifts.c \
+	parsing_utils.c \
+	parsing.c \
+	position.c \
+	push_swap_utils.c \
+	push_swap.c \
+	push.c \
+	reverse_rotate.c \
+	rotate.c \
+	sort.c \
+	swap.c
 
 OBJS= ${SRCS:.c=.o}
 
