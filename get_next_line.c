@@ -5,129 +5,143 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: anouri <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/29 17:09:51 by anouri            #+#    #+#             */
-/*   Updated: 2023/04/29 17:09:54 by anouri           ###   ########.fr       */
+/*   Created: 2023/01/22 13:06:33 by anouri            #+#    #+#             */
+/*   Updated: 2023/01/22 13:08:29 by anouri           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-static size_t    ft_line(char *s)
-{
-    size_t    i;
+#include "get_next_line.h"
 
-    if (!s)
-        return (0);
-    i = 0;
-    while (s[i])
-    {
-        if (s[i] == '\n')
-            return (1);
-        i++;
-    }
-    return (0);
+static size_t	ft_found_line(char *str)
+{
+	size_t	i;
+
+	if (!str)
+		return (0);
+	i = 0;
+	while (str[i])
+	{
+		if (str[i] == '\n')
+			return (1);
+		i++;
+	}
+	return (0);
 }
 
-static char    *ft_read_and_return(char *store, int fd)
+static char	*ft_read(char *stock, int fd)
 {
-    long int    words;
-    char        *buffer;
-    char        *temp;
+	long int	status;
+	char		*buff;
+	char		*temp;
 
-    words = 1;
-    buffer = malloc((BUFFER_SIZE + 1) * sizeof(char));
-    if (!buffer)
-        return (NULL);
-    while (words > 0 && ft_line(store) == 0)
-    {
-        words = read(fd, buffer, BUFFER_SIZE);
-        if (words == -1)
-        {
-            free(store);
-            free(buffer);
-            return (NULL);
-        }
-        buffer[words] = '\0';
-        temp = store;
-        store = ft_strjoin(temp, buffer);
-        free(temp);
-    }
-    free(buffer);
-    return (store);
+	status = 1;
+	buff = malloc((BUFFER_SIZE + 1) * sizeof(char));
+	while (status > 0 && ft_found_line(stock) == 0)
+	{
+		status = read (fd, buff, BUFFER_SIZE);
+		if (status == -1)
+		{
+			free(stock);
+			free(buff);
+			return (NULL);
+		}
+		buff[status] = '\0';
+		temp = stock;
+		stock = ft_strjoin(temp, buff);
+		free(temp);
+	}
+	free(buff);
+	return (stock);
 }
 
-static char    *ft_get_one_line(char *s)
+static char	*ft_get_line(char *str)
 {
-    size_t    i;
-    char    *one_line;
+	size_t	i;
+	char	*line;
 
-    i = 0;
-    if (!s[i])
-        return (NULL);
-    while (s[i] != '\n' && s[i] != '\0')
-        i++;
-    one_line = malloc((i + 2) * sizeof(char));
-    if (!one_line)
-        return (free(one_line), NULL);
-    i = 0;
-    while (s[i] && s[i] != '\n')
-    {
-        one_line[i] = s[i];
-        i++;
-    }
-    if (s[i] == '\n')
-    {
-        one_line[i] = '\n';
-        i++;
-    }
-    one_line[i] = '\0';
-    return (one_line);
+	i = 0;
+	if (!str[i])
+		return (NULL);
+	while (str[i] != '\n' && str[i] != '\0')
+		i++;
+	line = malloc((i + 2) * sizeof(char));
+	if (!line)
+		return (NULL);
+	i = 0;
+	while (str[i] && str[i] != '\n')
+	{
+		line[i] = str[i];
+		i++;
+	}
+	if (str[i] == '\n')
+	{
+		line[i] = '\n';
+		i++;
+	}
+	line[i] = '\0';
+	return (line);
 }
 
-static char    *ft_update_store(char *s, char *line)
+static char	*ft_update_stock(char *str, char *line)
 {
-    size_t    i;
-    size_t    size;
-    size_t    len;
-    char    *res;
+	size_t	p;
+	char	*new_str;
+	size_t	size;
+	size_t	line_len;
 
-    if (!s)
-        return (NULL);
-    len = ft_strlen(line);
-    size = ft_strlen(s) - ft_strlen(line);
-    res = malloc((size + 1) * sizeof(char));
-    if (!res)
-        return (NULL);
-    i = 0;
-    while (i < size)
-    {
-        res[i] = s[len + i];
-        i++;
-    }
-    res[i] = '\0';
-    free(s);
-    return (res);
+	if (!str)
+		return (NULL);
+	line_len = ft_strlen(line);
+	size = ft_strlen(str) - ft_strlen(line);
+	new_str = malloc((size + 1) * sizeof(char));
+	if (!new_str)
+		return (NULL);
+	p = 0;
+	while (p < size)
+	{
+		new_str[p] = str[line_len + p];
+		p++;
+	}
+	new_str[p] = '\0';
+	free(str);
+	return (new_str);
 }
 
-char    *get_next_line(int fd, int val)
+char	*get_next_line(int fd, int error)
 {
-    static char    *store;
-    char        *line;
+	static char	*stock;
+	char		*line;
 
-    if (val == 1)
-        return (free(store), NULL);
-    if (fd < 0 || BUFFER_SIZE < 0)
-        return (NULL);
-    store = ft_read_and_return(store, fd);
-    if (!store)
-    {
-        free(store);
-        return (NULL);
-    }
-    line = ft_get_one_line(store);
-    store = ft_update_store(store, line);
-    if (!line)
-    {
-        free(store);
-        store = (NULL);
-    }
-    return (line);
+	if (error == 1)
+		return (free(stock), NULL);
+	if (fd < 0 || BUFFER_SIZE < 0)
+		return (NULL);
+	stock = ft_read(stock, fd);
+	if (!stock)
+	{
+		free(stock);
+		return (NULL);
+	}
+	line = ft_get_line(stock);
+	stock = ft_update_stock(stock, line);
+	if (!line)
+	{
+		return (free(stock), NULL);
+	}
+	return (line);
 }
+
+/*int main()
+{
+     int fd;
+     fd = open("a_lire.txt", O_RDONLY);
+     char    *line;
+
+    while (line = get_next_line(fd))
+    {
+     printf("%s", line);
+     free(line);
+    }
+    close(fd);
+}
+*/

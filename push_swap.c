@@ -30,15 +30,7 @@ int	main(int ac, char **av)
 	t_list	*stack_b;
 	int		long_a;
 
-	if (ac == 2)
-	{
-		if (!check_if_valid(av))
-		{
-			write(1, "Error\n", 6);
-			exit(EXIT_FAILURE);
-		}
-	}
-	if (ac > 2)
+	if (ac > 1)
 	{
 		stack_b = NULL;
 		stack_a = get_list(ac, av);

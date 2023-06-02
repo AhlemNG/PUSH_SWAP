@@ -25,9 +25,23 @@ SRCS=  cost.c\
 	reverse_rotate.c \
 	rotate.c \
 	sort.c \
-	swap.c
+	swap.c \
+
+SRCS_BONUS= checker.c \
+	list_bonus.c \
+	push_bonus.c \
+	swap_bonus.c \
+	rotate_bonus.c \
+	parsing_bonus.c \
+	parsing_utils_bonus.c \
+	reverse_rotate_bonus.c \
+	push_swap_utils_bonus.c \
+	get_next_line.c \
+	get_next_line_utils.c \
 
 OBJS= ${SRCS:.c=.o}
+
+OBJS_BONUS= ${SRCS_BONUS:.c=.o}
 
 CC= cc
 
@@ -40,13 +54,16 @@ all: $(NAME)
 ${NAME}: ${OBJS}
 	${CC} ${FLAGS} ${OBJS} -o ${NAME}
 
+bonus: ${OBJS_BONUS}
+	${CC} ${FLAGS} ${OBJS_BONUS} -o checker
+
 AR= ar rcs
 
 clean:
-	${RM} ${OBJS}
+	${RM} ${OBJS} ${OBJS_BONUS}
 
 fclean: clean
-	${RM} ${NAME}
+	${RM} ${NAME} checker
 
 re: fclean all
 
